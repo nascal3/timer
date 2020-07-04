@@ -1,0 +1,24 @@
+<div id="container">
+  <br />
+  <br />
+
+  <div id="timer">
+    <div id="time">
+      <span id="minutes">{{minutes}}</span>
+      <span id="colon">:</span>
+      <span id="seconds">{{seconds}}</span>
+    </div>
+
+  </div>
+
+  <div id="buttons">
+    <button id="start" (click)="start()">Start!</button>
+
+    <button id="stop" (click)="stop()">Stop</button>
+    <button id="reset" (click)="resetVariables(25, 0, true)">Reset</button>
+    <br />
+    <button id="addFive" (click)="addFive()">+5</button>
+    <button id="minusFive" (click)="minusFive()">-5</button>
+  </div>
+
+</div>
