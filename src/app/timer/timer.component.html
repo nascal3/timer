@@ -6,7 +6,7 @@
     <div id="time">
       <span id="minutes">{{minutes}}</span>
       <span id="colon">:</span>
-      <span id="seconds">{{seconds}}</span>
+      <span id="seconds">{{formattedSeconds}}</span>
     </div>
 
   </div>
@@ -15,7 +15,7 @@
     <button id="start" (click)="start()">Start!</button>
 
     <button id="stop" (click)="stop()">Stop</button>
-    <button id="reset" (click)="resetVariables(25, 0, true)">Reset</button>
+    <button id="reset" (click)="resetVariables(25, 0, false)">Reset</button>
     <br />
     <button id="addFive" (click)="addFive()">+5</button>
     <button id="minusFive" (click)="minusFive()">-5</button>

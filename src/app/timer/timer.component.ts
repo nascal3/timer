@@ -9,6 +9,7 @@ export class TimerComponent implements OnInit{
   started: boolean;
   minutes: number;
   seconds: number;
+  formattedSeconds: string;
   newMin: any;
   interval: any;
 
@@ -18,15 +19,18 @@ export class TimerComponent implements OnInit{
   ngOnInit(): void {
     this.minutes = 25
     this.seconds = 0
+    this.formatSecondsToDoubleDigits(this.seconds)
   }
 
   resetVariables(mins, secs, started) {
     this.minutes = mins
     this.seconds = secs
     this.started = started
+    this.formatSecondsToDoubleDigits(this.seconds)
   }
 
   start() {
+    this.started = true
     this.newMin = setInterval(() => {
       this.intervalCallback()
     }, 1000)
@@ -34,11 +38,14 @@ export class TimerComponent implements OnInit{
 
   addFive() {
     this.minutes = this.minutes + 5
-    console.log(this.minutes)
   }
 
   minusFive() {
     this.minutes = this.minutes - 5
+  }
+
+  formatSecondsToDoubleDigits(seconds) {
+    this.formattedSeconds = ("0" + seconds).slice(-2);
   }
 
 
@@ -48,7 +55,7 @@ export class TimerComponent implements OnInit{
   }
 
   intervalCallback() {
-      this.seconds++
+      this.formatSecondsToDoubleDigits(this.seconds++)
       if (this.seconds === 60) {
         this.minutes++
         this.seconds = 0
