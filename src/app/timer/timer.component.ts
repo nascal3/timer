@@ -4,15 +4,20 @@ import { Component, OnInit } from '@angular/core';
   selector: 'timer',
   templateUrl: './timer.component.html',
 })
-export class TimerComponent {
+export class TimerComponent implements OnInit{
 
   started: boolean;
   minutes: number;
   seconds: number;
-  newMin: number;
+  newMin: any;
   interval: any;
 
   constructor() {
+  }
+
+  ngOnInit(): void {
+    this.minutes = 25
+    this.seconds = 0
   }
 
   resetVariables(mins, secs, started) {
@@ -22,34 +27,32 @@ export class TimerComponent {
   }
 
   start() {
-   setInterval(() => {
-     this.seconds += this.seconds
-     if (this.seconds === 60) {
-       this.minutes += this.minutes
-       this.seconds = 0
-     }
-   }, 1000)
+    this.newMin = setInterval(() => {
+      this.intervalCallback()
+    }, 1000)
   }
 
   addFive() {
-    this.minutes + 5
+    this.minutes = this.minutes + 5
+    console.log(this.minutes)
   }
 
   minusFive() {
-    this.minutes - 5
+    this.minutes = this.minutes - 5
   }
 
 
   stop() {
-
-  }
-
-  reset() {
-
+    clearInterval(this.newMin);
+    this.resetVariables(this.minutes, this.seconds, false)
   }
 
   intervalCallback() {
-
+      this.seconds++
+      if (this.seconds === 60) {
+        this.minutes++
+        this.seconds = 0
+      }
   }
 
 }
